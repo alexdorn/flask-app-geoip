@@ -1,6 +1,7 @@
 from flask import Flask, jsonify
 from flask_simple_geoip import SimpleGeoIP
 
+import os
 
 app = Flask(__name__)
 
@@ -18,3 +19,6 @@ def test():
     geoip_data = simple_geoip.get_geoip_data()
 
     return jsonify(data=geoip_data)
+
+if __name__ == "__main__":
+    app.run(debug=True, host="0.0.0.0", port=int(os.environ.get("PORT", 8080)))
